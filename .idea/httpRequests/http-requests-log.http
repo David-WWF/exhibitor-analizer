@@ -1,0 +1,602 @@
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 207
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_cleaned.csv",
+  "out_json_path": "exhibitors_enriched.json",
+  "out_csv_path": "exhibitors_enriched.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T163121.500.txt
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T162648.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T161751.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T112642.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T112340.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T112246.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T111821.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T111606.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T111401.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T111256.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T110815.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 214
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitor_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T110323.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+Content-Length: 215
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "csv_path": "exhibitors_test.csv",
+  "out_json_path": "exhibitors_enriched_test.json",
+  "out_csv_path": "exhibitors_enriched_test.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+
+<> 2026-03-04T110233.500.txt
+
+###
+
+POST http://127.0.0.1:8000/csv/clean_missing_description
+Accept: application/json
+Content-Type: application/json
+Content-Length: 78
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+  "csv_path": "exhibitors.csv",
+  "out_csv_path": "exhibitors_cleaned.csv"
+}
+
+<> 2026-03-03T140021.200.json
+
+###
+
+POST http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+Content-Type: application/json
+Content-Length: 37
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+    "exhibitorName": "ADEL CORP "
+}
+
+<> 2026-03-03T115918.200.json
+
+###
+
+POST http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+Content-Type: application/json
+Content-Length: 37
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+    "exhibitorName": "ADEL CORP "
+}
+
+<> 2026-03-03T115652.200.json
+
+###
+
+POST http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+Content-Type: application/json
+Content-Length: 67
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+    "exhibitorName": "Empresa",
+    "standLocation": "Al fondo"
+}
+
+<> 2026-03-03T115338.200.json
+
+###
+
+POST http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+Content-Type: application/json
+Content-Length: 67
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+    "exhibitorName": "Empresa",
+    "standLocation": "Al fondo"
+}
+
+<> 2026-03-03T115133.422.json
+
+###
+
+POST http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+Content-Length: 67
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+    "exhibitorName": "Empresa",
+    "standLocation": "Al fondo"
+}
+
+<> 2026-03-03T115009.422.json
+
+###
+
+POST http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+Content-Length: 66
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{
+    "exhibitorName": "Empresa"
+    "standLocation": "Al fondo"
+}
+
+<> 2026-03-03T114720.422.json
+
+###
+
+POST http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+Content-Length: 82
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+    {
+        "exhibitorName": "Empresa"
+        "standLocation": "Al fondo"
+    }
+
+<> 2026-03-03T114542.422.json
+
+###
+
+GET http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 82
+
+    {
+        "exhibitorName": "Empresa"
+        "standLocation": "Al fondo"
+    }
+
+<> 2026-03-03T114334.422.json
+
+###
+
+GET http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 82
+
+    {
+        "exhibitorName": "Empresa"
+        "standLocation": "Al fondo"
+    }
+
+<> 2026-03-03T114302.422.json
+
+###
+
+GET http://localhost:8000/exhibitors_find
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T113250.422.json
+
+###
+
+GET http://localhost:8000/exhibitors/AGRICULTURAL%20CORP
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T113218.422.json
+
+###
+
+GET http://localhost:8000/exhibitors
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T111122.200.json
+
+###
+
+GET http://localhost:8000/exhibitors/AGRICULTURAL%20CORP
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T111105.404.json
+
+###
+
+GET http://localhost:8000/exhibitors/AGRICULTURAL%20CORP
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T110923.404.json
+
+###
+
+GET http://localhost:8000/exhibitors/agrisanz
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T110630.500.txt
+
+###
+
+GET http://localhost:8000/exhibitors
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T110516.200.json
+
+###
+
+GET http://localhost:8000/exhibitors/AGOUR
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T110439.500.txt
+
+###
+
+GET http://localhost:8000/exhibitors/AGOUR/location
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T110427.200.json
+
+###
+
+GET http://localhost:8000/exhibitors/AGOUR/location
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T110236.200.json
+
+###
+
+GET http://localhost:8000/exhibitors/AECOC/location
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T105548.200.json
+
+###
+
+GET http://localhost:8000/exhibitors/AECOC/location
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T105507.500.txt
+
+###
+
+GET http://localhost:8000/exhibitors/adel%20corp/location
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T104513.404.json
+
+###
+
+GET http://localhost:8000/exhibitors/agronatural
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T102444.200.json
+
+###
+
+GET http://localhost:8000/exhibitors/AGRONATURAL
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T102420.200.json
+
+###
+
+GET http://localhost:8000/exhibitors/AGRONATURAL
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T102328.500.json
+
+###
+
+GET http://localhost:8000/exhibitors/agronatural
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T102315.500.json
+
+###
+
+GET http://localhost:8000/nombres
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T100445.200.json
+
+###
+
+GET http://localhost:8000/nombres
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T100328.200.json
+
+###
+
+GET http://localhost:8000/hello/David
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T085258.200.json
+
+###
+
+GET http://localhost:8000
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+<> 2026-03-03T085238.200.json
+
+###
+

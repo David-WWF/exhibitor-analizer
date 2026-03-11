@@ -1,0 +1,41 @@
+# Test your FastAPI endpoints
+
+GET http://127.0.0.1:8000/
+Accept: application/json
+###
+
+GET http://127.0.0.1:8000/hello/User
+Accept: application/json
+###
+
+POST http://127.0.0.1:8000/exhibitors_find
+Accept: application/json
+Content-Type: application/json
+
+{
+    "exhibitorName": "ADEL CORP "
+}
+###
+
+POST http://127.0.0.1:8000/csv/clean_missing_description
+Accept: application/json
+Content-Type: application/json
+
+{
+  "csv_path": "exhibitors.csv",
+  "out_csv_path": "exhibitors_cleaned.csv"
+}
+###
+
+POST http://127.0.0.1:8000/enrich_exhibitors/run
+Content-Type: application/json
+
+{
+  "csv_path": "exhibitors_cleaned.csv",
+  "out_json_path": "exhibitors_enriched.json",
+  "out_csv_path": "exhibitors_enriched.csv",
+  "name_col": "exhibitorName",
+  "delay_seconds": 0.2,
+  "verbose": true
+}
+####
