@@ -49,3 +49,11 @@ Content-Type: application/json
   "output_file": "exhibitor_webs.json"
 }
 ####
+
+### Enriquecer el JSON existente con IDs de Apollo.io
+# Este endpoint abre 'exhibitors_webs.json' y le inyecta los IDs encontrados.
+POST http://127.0.0.1:8000/enrich/apollo_ids
+Accept: application/json
+Content-Type: application/json
+
+{}

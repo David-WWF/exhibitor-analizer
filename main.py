@@ -4,6 +4,7 @@ from fastapi import FastAPI
 from pydantic import BaseModel
 from typing import Optional
 from tools.functions import *
+from tools.functions_apollo import enrich_existing_json_with_apollo
 from tools.functions_openai import enrich_exhibitors_csv_one_by_one
 from tools.openai_agent import consulta_empresa
 import os
@@ -95,6 +96,21 @@ async def run_antonio_test(req: WebTestRequest):
         "total": len(result["results"])
     }
 
+
+@app.post("/enrich/apollo_ids")
+async def run_apollo_enrichment():
+    try:
+        # Esto modificará directamente "exhibitor_webs.json"
+        await enrich_existing_json_with_apollo(
+            file_path="exhibitor_webs.json",
+            verbose=True
+        )
+        return {
+            "status": "success",
+            "message": "Archivo exhibitor_webs.json enriquecido con IDs de Apollo"
+        }
+    except Exception as e:
+        return {"status": "error", "detail": str(e)}
 
 if __name__ == "__main__":
     uvicorn.run(app, host="0.0.0.0", port=8000)

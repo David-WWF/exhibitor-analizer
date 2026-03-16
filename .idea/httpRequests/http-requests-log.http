@@ -1,3 +1,68 @@
+POST http://127.0.0.1:8000/enrich/apollo_ids
+Accept: application/json
+Content-Type: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{}
+
+<> 2026-03-16T114704.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich/apollo_ids
+Accept: application/json
+Content-Type: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{}
+
+<> 2026-03-16T114536.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich/apollo_ids
+Accept: application/json
+Content-Type: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{}
+
+<> 2026-03-16T114506.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich/apollo_ids
+Accept: application/json
+Content-Type: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{}
+
+<> 2026-03-16T114350.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich/apollo_ids
+Accept: application/json
+Content-Type: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{}
+
+<> 2026-03-16T114133.200.json
+
+###
+
 POST http://127.0.0.1:8000/test/run_antonio_workflow
 Content-Type: application/json
 Content-Length: 91
@@ -627,24 +692,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2026-03-03T100328.200.json
-
-###
-
-GET http://localhost:8000/hello/David
-User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2026-03-03T085258.200.json
-
-###
-
-GET http://localhost:8000
-User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2026-03-03T085238.200.json
 
 ###
 
