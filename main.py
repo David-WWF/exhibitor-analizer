@@ -10,6 +10,7 @@ from tools.openai_agent import consulta_empresa
 import os
 from dotenv import load_dotenv
 from tools.functions_openai import execute_web_test_workflow
+from tools.functions_apollo import enrich_contacts_details
 
 load_dotenv()
 
@@ -110,6 +111,20 @@ async def run_apollo_enrichment():
             "message": "Archivo exhibitor_webs.json enriquecido con IDs de Apollo"
         }
     except Exception as e:
+        return {"status": "error", "detail": str(e)}
+
+@app.post("/enrich/apollo_contacts_details")
+async def run_apollo_contacts_enrichment():
+    try:
+        # ASEGÚRATE DE QUE ESTE NOMBRE COINCIDA CON EL PASO ANTERIOR
+        # Si tu archivo se llama exhibitor_webs.json (sin s), quita la s aquí:
+        await enrich_contacts_details(file_path="exhibitor_webs.json")
+        return {
+            "status": "success",
+            "message": "Contactos enriquecidos correctamente."
+        }
+    except Exception as e:
+        # Esto te dirá exactamente qué nombre de archivo intentó abrir y falló
         return {"status": "error", "detail": str(e)}
 
 if __name__ == "__main__":
