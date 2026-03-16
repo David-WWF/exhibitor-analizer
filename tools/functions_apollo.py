@@ -102,8 +102,8 @@ async def enrich_contacts_details(
         verbose: bool = True
 ) -> Dict[str, Any]:
     """
-    PASO 2: Revela Email, Nombre y Cargo.
-    Guarda en el archivo JSON después de cada petición exitosa para máxima seguridad.
+    PASO 2: Revela Email, Nombre, Cargo y LinkedIn.
+    Si ya existe información pero falta el LinkedIn, vuelve a consultar para completar.
     """
     if not APOLLO_API_KEY:
         raise ValueError("APOLLO_API_KEY no encontrada en el .env")
@@ -127,24 +127,33 @@ async def enrich_contacts_details(
         for idx, entry in enumerate(items):
             ids = entry.get("apollo_ids", [])
 
-            # 1. Saltos preventivos (Ahorro de créditos y tiempo)
+            # 1. Si no hay IDs, no podemos hacer nada
             if not ids:
                 continue
 
-            # Si ya tiene información, no volvemos a preguntar a la API
-            if entry.get("contacts_info") and len(entry["contacts_info"]) > 0:
-                if verbose: print(f"[{idx + 1}/{len(items)}] ⏩ Ya enriquecido: {entry.get('exhibitorName')}")
-                continue
+            # 2. COMPROBACIÓN INTELIGENTE:
+            # ¿Ya tenemos info?
+            existing_info = entry.get("contacts_info", [])
 
-            if verbose: print(f"[{idx + 1}/{len(items)}] 🔍 Procesando: {entry.get('exhibitorName')}")
+            if existing_info and len(existing_info) > 0:
+                # Comprobamos si el primer contacto ya tiene el campo 'linkedin' rellenado
+                # (Asumimos que si el primero lo tiene, el resto del bloque también)
+                if existing_info[0].get("linkedin"):
+                    if verbose: print(f"[{idx + 1}/{len(items)}] ⏩ Completo: {entry.get('exhibitorName')}")
+                    continue
+                else:
+                    if verbose: print(
+                        f"[{idx + 1}/{len(items)}] 🔄 Actualizando (Falta LinkedIn): {entry.get('exhibitorName')}")
+            else:
+                if verbose: print(f"[{idx + 1}/{len(items)}] 🔍 Procesando nuevo: {entry.get('exhibitorName')}")
 
+            # 3. Preparación de la llamada
             payload = {
                 "details": [{"id": i} for i in ids],
                 "reveal_personal_emails": True,
                 "reveal_phone_number": False
             }
 
-            # 2. Lógica de petición con Reintento para Error 429
             max_retries = 1
             attempts = 0
             success = False
@@ -155,13 +164,21 @@ async def enrich_contacts_details(
 
                     if response.status_code == 200:
                         matches = response.json().get("matches", [])
+
+                        # Sobreescribimos con la información completa (incluyendo LinkedIn)
                         entry["contacts_info"] = [
-                            {"name": m.get("name"), "title": m.get("title"), "email": m.get("email")}
+                            {
+                                "name": m.get("name"),
+                                "title": m.get("title"),
+                                "email": m.get("email"),
+                                "linkedin": m.get("linkedin_url")
+                            }
                             for m in matches if m
                         ]
-                        if verbose: print(f"   ✅ Datos obtenidos y guardados.")
 
-                        # --- GUARDADO INMEDIATO EN CADA PASO ---
+                        if verbose: print(f"   ✅ Datos actualizados con LinkedIn.")
+
+                        # GUARDADO INMEDIATO
                         with open(file_path, "w", encoding="utf-8") as f:
                             json.dump(data, f, ensure_ascii=False, indent=2)
 
@@ -169,20 +186,17 @@ async def enrich_contacts_details(
 
                     elif response.status_code == 429:
                         attempts += 1
-                        wait_time = 120  # 2 minutos de enfriamiento
-                        if verbose: print(f"   ⚠️ Error 429 (Rate Limit). Pausa de emergencia de {wait_time}s...")
-                        await asyncio.sleep(wait_time)
+                        if verbose: print(f"   ⚠️ Error 429. Pausa de 120s...")
+                        await asyncio.sleep(120)
 
                     else:
-                        if verbose: print(f"   ⚠️ Error API {response.status_code}: {response.text}")
                         break
 
                 except Exception as e:
-                    if verbose: print(f"   ❌ Error de red: {e}")
+                    if verbose: print(f"   ❌ Error: {e}")
                     break
 
-                # Pausa de cortesía para mantener un ritmo estable (< 40 peticiones/min)
                 await asyncio.sleep(1.6)
 
-    if verbose: print(f"💾 Proceso completado con éxito. Todo el progreso ha sido guardado.")
+    if verbose: print(f"💾 Proceso de actualización finalizado.")
     return data

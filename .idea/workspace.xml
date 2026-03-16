@@ -4,11 +4,8 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d9623f-3ad9-4e04-83d7-c845edff991c" name="Changes" comment="Añadido filtrado por categoria, hay que añadir un sleep para que no supere las 40 peticiones por minuto">
+    <list default="true" id="b1d9623f-3ad9-4e04-83d7-c845edff991c" name="Changes" comment="Añadidos sleep. exhibitor_webs con filtrado funcionando">
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/test_main.http" beforeDir="false" afterPath="$PROJECT_DIR$/test_main.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/tools/functions_apollo.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/functions_apollo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
@@ -203,7 +200,7 @@
       <workItem from="1773222585233" duration="1113000" />
       <workItem from="1773318149209" duration="142000" />
       <workItem from="1773318826383" duration="4666000" />
-      <workItem from="1773649085320" duration="22102000" />
+      <workItem from="1773649085320" duration="22558000" />
     </task>
     <task id="LOCAL-00001" summary="archivos enriquecidos">
       <option name="closed" value="true" />
@@ -277,7 +274,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773676899460</updated>
     </task>
-    <option name="localTasksCounter" value="10" />
+    <task id="LOCAL-00010" summary="Añadidos sleep. exhibitor_webs con filtrado funcionando">
+      <option name="closed" value="true" />
+      <created>1773678826857</created>
+      <option name="number" value="00010" />
+      <option name="presentableId" value="LOCAL-00010" />
+      <option name="project" value="LOCAL" />
+      <updated>1773678826857</updated>
+    </task>
+    <option name="localTasksCounter" value="11" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -305,10 +310,11 @@
     <MESSAGE value="Info de Name, title y email, añadida" />
     <MESSAGE value="He añadido tambien el linkedin" />
     <MESSAGE value="Añadido filtrado por categoria, hay que añadir un sleep para que no supere las 40 peticiones por minuto" />
-    <option name="LAST_COMMIT_MESSAGE" value="Añadido filtrado por categoria, hay que añadir un sleep para que no supere las 40 peticiones por minuto" />
+    <MESSAGE value="Añadidos sleep. exhibitor_webs con filtrado funcionando" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadidos sleep. exhibitor_webs con filtrado funcionando" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Exhibitors$main.coverage" NAME="main Coverage Results" MODIFIED="1773678565499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Exhibitors$main.coverage" NAME="main Coverage Results" MODIFIED="1773679069035" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Exhibitors$Exhibitors.coverage" NAME="Exhibitors Coverage Results" MODIFIED="1772524351457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>
