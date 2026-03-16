@@ -40,12 +40,18 @@ Content-Type: application/json
 }
 ####
 
-### Llamada para probar al buscador de webs (Antonio)
+### Limpieza de json por sectores; crea un nuevo json exhibitors_filtered
+POST http://127.0.0.1:8000/utils/filter-sectors
+Accept: application/json
+
+###
+
+### Llamada para el buscador de webs (Antonio)
 POST http://127.0.0.1:8000/test/run_antonio_workflow
 Content-Type: application/json
 
 {
-  "input_file": "exhibitors_enriched_test.json",
+  "input_file": "exhibitors_filtered.json",
   "output_file": "exhibitor_webs.json"
 }
 ####
@@ -66,3 +72,4 @@ Content-Type: application/json
 
 {}
 ####
+

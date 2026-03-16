@@ -11,6 +11,7 @@ import os
 from dotenv import load_dotenv
 from tools.functions_openai import execute_web_test_workflow
 from tools.functions_apollo import enrich_contacts_details
+from utils.json_filter import filter_exhibitors
 
 load_dotenv()
 
@@ -97,6 +98,26 @@ async def run_antonio_test(req: WebTestRequest):
         "total": len(result["results"])
     }
 
+# Aplica filtro de limpieza por sectorName
+@app.post("/utils/filter-sectors")
+async def run_filter_sectors():
+    """
+    Mantiene SOLO los sectores estratégicos y elimina el resto.
+    """
+    try:
+        # Asegúrate de que el nombre del archivo de entrada sea el correcto
+        input_file = "exhibitors_enriched.json"
+        output_file = "exhibitors_filtered.json"
+
+        filter_exhibitors(input_path=input_file, output_path=output_file)
+
+        return {
+            "status": "success",
+            "message": "Filtro aplicado: solo se han mantenido los sectores objetivo.",
+            "file_generated": output_file
+        }
+    except Exception as e:
+        return {"status": "error", "detail": str(e)}
 
 @app.post("/enrich/apollo_ids")
 async def run_apollo_enrichment():

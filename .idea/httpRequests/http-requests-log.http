@@ -1,3 +1,33 @@
+POST http://127.0.0.1:8000/utils/filter-sectors
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2026-03-16T162549.200.json
+
+###
+
+POST http://127.0.0.1:8000/utils/filter-sectors
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2026-03-16T160134.200.json
+
+###
+
+POST http://127.0.0.1:8000/utils/filter-sectors
+Accept: application/json
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+content-length: 0
+
+<> 2026-03-16T155951.200.json
+
+###
+
 POST http://127.0.0.1:8000/enrich/apollo_contacts_details
 Accept: application/json
 Content-Type: application/json
@@ -685,33 +715,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2026-03-03T105548.200.json
-
-###
-
-GET http://localhost:8000/exhibitors/AECOC/location
-User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2026-03-03T105507.500.txt
-
-###
-
-GET http://localhost:8000/exhibitors/adel%20corp/location
-User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2026-03-03T104513.404.json
-
-###
-
-GET http://localhost:8000/exhibitors/agronatural
-User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2026-03-03T102444.200.json
 
 ###
 

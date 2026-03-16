@@ -8,3 +8,4 @@
 /.env
 /.idea/httpRequests
 /exhibitor_webs.json
+/exhibitors_filtered.json
