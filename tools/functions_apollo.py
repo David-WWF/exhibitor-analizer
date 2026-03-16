@@ -172,6 +172,7 @@ async def enrich_contacts_details(
                             contacts_extracted.append({
                                 "name": m.get("name"),
                                 "title": m.get("title"),
+                                "linkedin_url": m.get("linkedin_url"),
                                 "email": m.get("email")
                             })
 

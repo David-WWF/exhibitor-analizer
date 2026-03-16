@@ -116,8 +116,7 @@ async def run_apollo_enrichment():
 @app.post("/enrich/apollo_contacts_details")
 async def run_apollo_contacts_enrichment():
     try:
-        # ASEGÚRATE DE QUE ESTE NOMBRE COINCIDA CON EL PASO ANTERIOR
-        # Si tu archivo se llama exhibitor_webs.json (sin s), quita la s aquí:
+
         await enrich_contacts_details(file_path="exhibitor_webs.json")
         return {
             "status": "success",
