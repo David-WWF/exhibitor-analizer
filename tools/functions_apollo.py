@@ -1,18 +1,19 @@
 import os
 import json
 import httpx
+import asyncio
 from typing import Any, Dict
 from urllib.parse import urlparse
 from dotenv import load_dotenv
 
 load_dotenv()
 
+# Configuración de URLs y API Key
 APOLLO_API_KEY = os.getenv("APOLLO_API_KEY")
-# URL ACTUALIZADA SEGÚN EL ERROR 422
-APOLLO_URL = "https://api.apollo.io/v1/mixed_people/api_search"
-#URL de eriquecimiento por ID
+APOLLO_SEARCH_URL = "https://api.apollo.io/v1/mixed_people/api_search"
 APOLLO_BULK_MATCH_URL = "https://api.apollo.io/api/v1/people/bulk_match"
 
+# Títulos estratégicos para la búsqueda
 TARGET_TITLES = [
     "Director Comercial", "Director de Marketing", "Commercial Director",
     "Marketing Director", "Chief Commercial Officer", "CCO", "CMO",
@@ -23,6 +24,7 @@ TARGET_TITLES = [
 
 
 def extract_clean_domain(url: str) -> str:
+    """Extrae el dominio limpio (ej: empresa.com) de una URL completa."""
     if not url or url == "null":
         return ""
     try:
@@ -37,11 +39,12 @@ def extract_clean_domain(url: str) -> str:
         return ""
 
 
-async def enrich_existing_json_with_apollo(
+async def get_apollo_ids(
         *,
         file_path: str = "exhibitor_webs.json",
         verbose: bool = True
 ) -> Dict[str, Any]:
+    """PASO 1: Busca personas por dominio y guarda sus IDs en el JSON."""
     if not APOLLO_API_KEY:
         raise ValueError("APOLLO_API_KEY no encontrada en el .env")
 
@@ -59,17 +62,18 @@ async def enrich_existing_json_with_apollo(
 
     async with httpx.AsyncClient(timeout=30.0) as client:
         for idx, entry in enumerate(items):
-            web_url = entry.get("web_empresa")
-            domain = extract_clean_domain(web_url)
+            # Control de Rate Limit: 40 peticiones -> 60 seg de pausa
+            if idx > 0 and idx % 40 == 0:
+                if verbose: print(f"⏳ Pausa técnica (Rate Limit) de 60s...")
+                await asyncio.sleep(60)
 
+            domain = extract_clean_domain(entry.get("web_empresa"))
             if not domain:
                 entry["apollo_ids"] = []
                 continue
 
-            if verbose:
-                print(f"[{idx + 1}/{len(items)}] 🎯 Consultando en nuevo endpoint: '{domain}'")
+            if verbose: print(f"[{idx + 1}/{len(items)}] 🎯 Buscando IDs: {domain}")
 
-            # Estructura para el nuevo endpoint api_search
             payload = {
                 "q_organization_domains": domain,
                 "person_titles": TARGET_TITLES,
@@ -78,128 +82,107 @@ async def enrich_existing_json_with_apollo(
             }
 
             try:
-                response = await client.post(
-                    APOLLO_URL,
-                    json=payload,
-                    headers=headers
-                )
-
+                response = await client.post(APOLLO_SEARCH_URL, json=payload, headers=headers)
                 if response.status_code == 200:
-                    apollo_data = response.json()
-                    # En el nuevo endpoint, a veces la clave es 'people' o 'contacts'
-                    # pero usualmente mantienen 'people' en api_search
-                    people = apollo_data.get("people", [])
-                    ids = [p.get("id") for p in people if p.get("id")]
-                    entry["apollo_ids"] = ids
-                    if verbose: print(f"   ✅ Encontrados: {len(ids)}")
+                    people = response.json().get("people", [])
+                    entry["apollo_ids"] = [p.get("id") for p in people if p.get("id")]
                 else:
                     entry["apollo_ids"] = []
-                    if verbose: print(f"   ⚠️ Error {response.status_code}: {response.text}")
-
-            except Exception as e:
+            except Exception:
                 entry["apollo_ids"] = []
-                if verbose: print(f"   ❌ Error: {e}")
 
     with open(file_path, "w", encoding="utf-8") as f:
         json.dump(data, f, ensure_ascii=False, indent=2)
-
     return data
 
-
+# Rellena e Json con los datos de contacto, solo si hay ids que comprobar
 async def enrich_contacts_details(
         *,
-        file_path: str = "exhibitors_webs.json",
+        file_path: str = "exhibitor_webs.json",
         verbose: bool = True
 ) -> Dict[str, Any]:
+    """
+    PASO 2: Revela Email, Nombre y Cargo.
+    Guarda en el archivo JSON después de cada petición exitosa para máxima seguridad.
+    """
     if not APOLLO_API_KEY:
         raise ValueError("APOLLO_API_KEY no encontrada en el .env")
 
-    # 1. Cargar el archivo
     try:
         with open(file_path, 'r', encoding='utf-8') as f:
             data = json.load(f)
     except FileNotFoundError:
-        raise Exception(f"No se encontró el archivo: {file_path}")
+        print(f"❌ Error: No se encontró {file_path}")
+        return {}
 
-    items = data.get("results" if "results" in data else "rows", [])
+    key_name = "results" if "results" in data else "rows"
+    items = data.get(key_name, [])
 
     headers = {
-        "Cache-Control": "no-cache",
         "Content-Type": "application/json",
         "X-Api-Key": APOLLO_API_KEY
     }
 
-    if verbose:
-        print(f"🚀 Iniciando fase de Bulk Match para {len(items)} empresas...")
-
-    async with httpx.AsyncClient(timeout=60.0) as client:
+    async with httpx.AsyncClient(timeout=45.0) as client:
         for idx, entry in enumerate(items):
             ids = entry.get("apollo_ids", [])
 
-            # Si no hay IDs, saltamos
+            # 1. Saltos preventivos (Ahorro de créditos y tiempo)
             if not ids:
-                entry["contacts_info"] = []
                 continue
 
-            if verbose:
-                print(f"[{idx + 1}/{len(items)}] 🔍 Procesando {len(ids)} IDs para: {entry.get('exhibitorName')}")
+            # Si ya tiene información, no volvemos a preguntar a la API
+            if entry.get("contacts_info") and len(entry["contacts_info"]) > 0:
+                if verbose: print(f"[{idx + 1}/{len(items)}] ⏩ Ya enriquecido: {entry.get('exhibitorName')}")
+                continue
 
-            # 2. Preparar el payload con TODOS los IDs de esta empresa
-            # Formato esperado: "details": [{"id": "id1"}, {"id": "id2"}]
-            details_list = [{"id": i} for i in ids]
+            if verbose: print(f"[{idx + 1}/{len(items)}] 🔍 Procesando: {entry.get('exhibitorName')}")
 
             payload = {
-                "details": details_list,
+                "details": [{"id": i} for i in ids],
                 "reveal_personal_emails": True,
                 "reveal_phone_number": False
             }
 
-            try:
-                response = await client.post(
-                    APOLLO_BULK_MATCH_URL,
-                    json=payload,
-                    headers=headers
-                )
+            # 2. Lógica de petición con Reintento para Error 429
+            max_retries = 1
+            attempts = 0
+            success = False
 
-                if response.status_code == 200:
-                    res_data = response.json()
-                    matches = res_data.get("matches", [])
+            while attempts <= max_retries and not success:
+                try:
+                    response = await client.post(APOLLO_BULK_MATCH_URL, json=payload, headers=headers)
 
-                    contacts_extracted = []
-                    for m in matches:
-                        # Verificación de datos: solo guardamos si tiene nombre
-                        if m:
-                            contacts_extracted.append({
-                                "name": m.get("name"),
-                                "title": m.get("title"),
-                                "linkedin_url": m.get("linkedin_url"),
-                                "email": m.get("email")
-                            })
+                    if response.status_code == 200:
+                        matches = response.json().get("matches", [])
+                        entry["contacts_info"] = [
+                            {"name": m.get("name"), "title": m.get("title"), "email": m.get("email")}
+                            for m in matches if m
+                        ]
+                        if verbose: print(f"   ✅ Datos obtenidos y guardados.")
 
-                    # Actualizar el registro
-                    entry["contacts_info"] = contacts_extracted
+                        # --- GUARDADO INMEDIATO EN CADA PASO ---
+                        with open(file_path, "w", encoding="utf-8") as f:
+                            json.dump(data, f, ensure_ascii=False, indent=2)
 
-                    if verbose:
-                        if contacts_extracted:
-                            print(f"   ✅ Éxito: Se obtuvieron {len(contacts_extracted)} contactos reales.")
-                        else:
-                            print(f"   ⚠️ Apollo devolvió 200 pero sin matches (revisa créditos).")
+                        success = True
 
-                else:
-                    entry["contacts_info"] = []
-                    if verbose:
-                        print(f"   ❌ Error {response.status_code} en Apollo: {response.text}")
+                    elif response.status_code == 429:
+                        attempts += 1
+                        wait_time = 120  # 2 minutos de enfriamiento
+                        if verbose: print(f"   ⚠️ Error 429 (Rate Limit). Pausa de emergencia de {wait_time}s...")
+                        await asyncio.sleep(wait_time)
 
-            except Exception as e:
-                entry["contacts_info"] = []
-                if verbose:
-                    print(f"   ❌ Error de conexión: {str(e)}")
+                    else:
+                        if verbose: print(f"   ⚠️ Error API {response.status_code}: {response.text}")
+                        break
 
-    # 3. Guardar cambios
-    with open(file_path, "w", encoding="utf-8") as f:
-        json.dump(data, f, ensure_ascii=False, indent=2)
+                except Exception as e:
+                    if verbose: print(f"   ❌ Error de red: {e}")
+                    break
 
-    if verbose:
-        print(f"💾 Proceso finalizado. Archivo '{file_path}' actualizado.")
+                # Pausa de cortesía para mantener un ritmo estable (< 40 peticiones/min)
+                await asyncio.sleep(1.6)
 
+    if verbose: print(f"💾 Proceso completado con éxito. Todo el progreso ha sido guardado.")
     return data

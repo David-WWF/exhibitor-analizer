@@ -4,13 +4,12 @@
     <option name="autoReloadType" value="SELECTIVE" />
   </component>
   <component name="ChangeListManager">
-    <list default="true" id="b1d9623f-3ad9-4e04-83d7-c845edff991c" name="Changes" comment="He añadido tambien el linkedin">
-      <change afterPath="$PROJECT_DIR$/utils/json_filter.py" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.gitignore" beforeDir="false" afterPath="$PROJECT_DIR$/.gitignore" afterDir="false" />
+    <list default="true" id="b1d9623f-3ad9-4e04-83d7-c845edff991c" name="Changes" comment="Añadido filtrado por categoria, hay que añadir un sleep para que no supere las 40 peticiones por minuto">
       <change beforePath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/httpRequests/http-requests-log.http" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/main.py" beforeDir="false" afterPath="$PROJECT_DIR$/main.py" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/test_main.http" beforeDir="false" afterPath="$PROJECT_DIR$/test_main.http" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/tools/functions_apollo.py" beforeDir="false" afterPath="$PROJECT_DIR$/tools/functions_apollo.py" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -72,6 +71,7 @@
     "HTTP Request.test_main | #6.executor": "Run",
     "HTTP Request.test_main | #7.executor": "Run",
     "HTTP Request.test_main | #8.executor": "Run",
+    "HTTP Request.test_main | #9.executor": "Run",
     "ModuleVcsDetector.initialDetectionPerformed": "true",
     "Python.main.executor": "Run",
     "RunOnceActivity.MCP Project settings loaded": "true",
@@ -104,20 +104,17 @@
         <entry key="HttpClient.HttpRequestRunConfigurationType">
           <value>
             <map>
-              <entry key="test_main | #5" value="STOPPED" />
               <entry key="test_main | #6" value="STOPPED" />
               <entry key="test_main | #7" value="STOPPED" />
               <entry key="test_main | #8" value="STOPPED" />
+              <entry key="test_main | #9" value="STOPPED" />
             </map>
           </value>
         </entry>
       </map>
     </option>
   </component>
-  <component name="RunManager" selected="HTTP Request.test_main | #8">
-    <configuration name="test_main | #5" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#5" index="5" runType="Run single request">
-      <method v="2" />
-    </configuration>
+  <component name="RunManager" selected="HTTP Request.test_main | #9">
     <configuration name="test_main | #6" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#6" index="6" runType="Run single request">
       <method v="2" />
     </configuration>
@@ -125,6 +122,9 @@
       <method v="2" />
     </configuration>
     <configuration name="test_main | #8" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#8" index="8" runType="Run single request">
+      <method v="2" />
+    </configuration>
+    <configuration name="test_main | #9" type="HttpClient.HttpRequestRunConfigurationType" factoryName="HTTP Request" temporary="true" nameIsGenerated="true" path="$PROJECT_DIR$/test_main.http" executionIdentifier="#9" index="9" runType="Run single request">
       <method v="2" />
     </configuration>
     <configuration name="main" type="PythonConfigurationType" factoryName="Python" temporary="true" nameIsGenerated="true">
@@ -169,11 +169,11 @@
     </configuration>
     <recent_temporary>
       <list>
+        <item itemvalue="HTTP Request.test_main | #9" />
+        <item itemvalue="Python.main" />
         <item itemvalue="HTTP Request.test_main | #8" />
         <item itemvalue="HTTP Request.test_main | #7" />
         <item itemvalue="HTTP Request.test_main | #6" />
-        <item itemvalue="Python.main" />
-        <item itemvalue="HTTP Request.test_main | #5" />
       </list>
     </recent_temporary>
   </component>
@@ -203,7 +203,7 @@
       <workItem from="1773222585233" duration="1113000" />
       <workItem from="1773318149209" duration="142000" />
       <workItem from="1773318826383" duration="4666000" />
-      <workItem from="1773649085320" duration="20304000" />
+      <workItem from="1773649085320" duration="22102000" />
     </task>
     <task id="LOCAL-00001" summary="archivos enriquecidos">
       <option name="closed" value="true" />
@@ -269,7 +269,15 @@
       <option name="project" value="LOCAL" />
       <updated>1773662837346</updated>
     </task>
-    <option name="localTasksCounter" value="9" />
+    <task id="LOCAL-00009" summary="Añadido filtrado por categoria, hay que añadir un sleep para que no supere las 40 peticiones por minuto">
+      <option name="closed" value="true" />
+      <created>1773676899460</created>
+      <option name="number" value="00009" />
+      <option name="presentableId" value="LOCAL-00009" />
+      <option name="project" value="LOCAL" />
+      <updated>1773676899460</updated>
+    </task>
+    <option name="localTasksCounter" value="10" />
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
@@ -296,10 +304,11 @@
     <MESSAGE value="Ids de apollo obtenidos" />
     <MESSAGE value="Info de Name, title y email, añadida" />
     <MESSAGE value="He añadido tambien el linkedin" />
-    <option name="LAST_COMMIT_MESSAGE" value="He añadido tambien el linkedin" />
+    <MESSAGE value="Añadido filtrado por categoria, hay que añadir un sleep para que no supere las 40 peticiones por minuto" />
+    <option name="LAST_COMMIT_MESSAGE" value="Añadido filtrado por categoria, hay que añadir un sleep para que no supere las 40 peticiones por minuto" />
   </component>
   <component name="com.intellij.coverage.CoverageDataManagerImpl">
-    <SUITE FILE_PATH="coverage/Exhibitors$main.coverage" NAME="main Coverage Results" MODIFIED="1773674732724" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
+    <SUITE FILE_PATH="coverage/Exhibitors$main.coverage" NAME="main Coverage Results" MODIFIED="1773678565499" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="$PROJECT_DIR$" />
     <SUITE FILE_PATH="coverage/Exhibitors$Exhibitors.coverage" NAME="Exhibitors Coverage Results" MODIFIED="1772524351457" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="coverage.py" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="false" WORKING_DIRECTORY="" />
   </component>
 </project>

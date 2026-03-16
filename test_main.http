@@ -65,7 +65,7 @@ Content-Type: application/json
 {}
 ####
 
-### Revelar Emails y Nombres de los contactos
+### Rellena de nombres, emails, linkedin de los contactos
 POST http://127.0.0.1:8000/enrich/apollo_contacts_details
 Accept: application/json
 Content-Type: application/json

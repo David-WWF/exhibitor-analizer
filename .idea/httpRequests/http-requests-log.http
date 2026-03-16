@@ -1,3 +1,29 @@
+POST http://127.0.0.1:8000/enrich/apollo_contacts_details
+Accept: application/json
+Content-Type: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{}
+
+<> 2026-03-16T173242.200.json
+
+###
+
+POST http://127.0.0.1:8000/enrich/apollo_contacts_details
+Accept: application/json
+Content-Type: application/json
+Content-Length: 2
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+
+{}
+
+<> 2026-03-16T173015.200.json
+
+###
+
 POST http://127.0.0.1:8000/utils/filter-sectors
 Accept: application/json
 User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
@@ -697,24 +723,6 @@ Accept-Encoding: br, deflate, gzip, x-gzip
 Accept: */*
 
 <> 2026-03-03T110427.200.json
-
-###
-
-GET http://localhost:8000/exhibitors/AGOUR/location
-User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2026-03-03T110236.200.json
-
-###
-
-GET http://localhost:8000/exhibitors/AECOC/location
-User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
-Accept-Encoding: br, deflate, gzip, x-gzip
-Accept: */*
-
-<> 2026-03-03T105548.200.json
 
 ###
 
