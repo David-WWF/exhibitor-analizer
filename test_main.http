@@ -39,3 +39,13 @@ Content-Type: application/json
   "verbose": true
 }
 ####
+
+### Llamada para probar al buscador de webs (Antonio)
+POST http://127.0.0.1:8000/test/run_antonio_workflow
+Content-Type: application/json
+
+{
+  "input_file": "exhibitors_enriched_test.json",
+  "output_file": "exhibitor_webs.json"
+}
+####

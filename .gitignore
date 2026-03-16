@@ -6,3 +6,5 @@
 /exhibitors_enriched_test.json
 /exhibitor_test.csv
 /.env
+/.idea/httpRequests
+/exhibitor_webs.json

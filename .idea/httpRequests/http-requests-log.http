@@ -1,3 +1,51 @@
+POST http://127.0.0.1:8000/test/run_antonio_workflow
+Content-Type: application/json
+Content-Length: 91
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "input_file": "exhibitors_enriched_test.json",
+  "output_file": "exhibitor_webs.json"
+}
+
+<> 2026-03-16T111908.200.json
+
+###
+
+POST http://127.0.0.1:8000/test/run_antonio_workflow
+Content-Type: application/json
+Content-Length: 91
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "input_file": "exhibitors_enriched_test.json",
+  "output_file": "exhibitor_webs.json"
+}
+
+<> 2026-03-16T105400.200.json
+
+###
+
+POST http://127.0.0.1:8000/test/run_antonio_workflow
+Content-Type: application/json
+Content-Length: 90
+User-Agent: IntelliJ HTTP Client/PyCharm 2025.3.3
+Accept-Encoding: br, deflate, gzip, x-gzip
+Accept: */*
+
+{
+  "input_file": "exhibitor_enriched_test.json",
+  "output_file": "exhibitor_webs.json"
+}
+
+<> 2026-03-16T105148.500.txt
+
+###
+
 POST http://127.0.0.1:8000/enrich_exhibitors/run
 Content-Type: application/json
 Content-Length: 207

@@ -4,6 +4,8 @@ from typing import Any, Dict, Optional
 
 import pandas as pd
 from agents import Runner, RunConfig, trace
+from tools.buscador_webs_agent import run_workflow, WorkflowInput
+
 
 
 async def enrich_exhibitors_csv_one_by_one(
@@ -156,3 +158,55 @@ async def enrich_exhibitors_csv_one_by_one(
         df.to_csv(out_csv_path, index=False)
 
     return payload
+
+# Nueva funcion del agente Antonio
+async def execute_web_test_workflow(
+        *,
+        input_json_path: str,
+        out_json_path: str = "exhibitor_webs.json",
+        verbose: bool = True
+) -> Dict[str, Any]:
+    # 1. Leer el archivo de prueba (exhibitor_enriched_test.json)
+    with open(input_json_path, 'r', encoding='utf-8') as f:
+        data = json.load(f)
+
+    rows = data.get("rows", [])
+    test_results = []
+
+    if verbose:
+        print(f"🚀 Iniciando prueba con {len(rows)} registros...")
+
+    # 2. Iterar y llamar a TU función run_workflow
+    for idx, row in enumerate(rows):
+        name = row.get("exhibitorName", "").strip()
+        if not name: continue
+
+        if verbose:
+            print(f"[{idx + 1}/{len(rows)}] Procesando: {name}")
+
+        try:
+            # Llamamos a tu función respetando su WorkflowInput
+            result = await run_workflow(WorkflowInput(input_as_text=name))
+
+            # Extraemos los datos del "output_parsed" que genera tu función
+            parsed = result["output_parsed"]
+
+            test_results.append({
+                "exhibitorName": name,
+                "web_empresa": parsed.get("web_empresa"),
+                "score_web": parsed.get("score_web")
+            })
+        except Exception as e:
+            if verbose: print(f"❌ Error en {name}: {e}")
+            continue
+
+    # 3. Guardar en el NUEVO archivo JSON sin modificar el original
+    output_data = {
+        "test_source": input_json_path,
+        "results": test_results
+    }
+
+    with open(out_json_path, "w", encoding="utf-8") as f:
+        json.dump(output_data, f, ensure_ascii=False, indent=2)
+
+    return output_data

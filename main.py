@@ -8,8 +8,13 @@ from tools.functions_openai import enrich_exhibitors_csv_one_by_one
 from tools.openai_agent import consulta_empresa
 import os
 from dotenv import load_dotenv
+from tools.functions_openai import execute_web_test_workflow
 
 load_dotenv()
+
+class WebTestRequest(BaseModel):
+    input_file: str = "exhibitor_enriched_test.json"
+    output_file: str = "exhibitor_webs.json"
 
 class Exhibitor(BaseModel):
     exhibitorName: Optional[str] = None
@@ -75,6 +80,19 @@ async def enrich_exhibitors_run(req: EnrichRequest):
         # Si quieres, quita rows del response y deja solo resumen.
         "rows_preview": result["rows"][:10],
         "errors": result["errors"],
+    }
+
+@app.post("/test/run_antonio_workflow")
+async def run_antonio_test(req: WebTestRequest):
+    result = await execute_web_test_workflow(
+        input_json_path=req.input_file,
+        out_json_path=req.output_file,
+        verbose=True
+    )
+    return {
+        "status": "Prueba completada",
+        "archivo_generado": req.output_file,
+        "total": len(result["results"])
     }
 
 
